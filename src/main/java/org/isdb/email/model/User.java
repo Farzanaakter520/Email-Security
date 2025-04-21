@@ -53,6 +53,15 @@ public class User {
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
 
+	public User(String email, String password, Role role, String firstName, String lastName, String phoneNumber) {
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		createdAt = LocalDateTime.now();
@@ -62,14 +71,5 @@ public class User {
 	@PreUpdate
 	protected void onUpdate() {
 		updatedAt = LocalDateTime.now();
-	}
-
-	public User(String email, String password, Role role, String firstName, String lastName, String phoneNumber) {
-		this.email = email;
-		this.password = password;
-		this.role = role;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
 	}
 }
